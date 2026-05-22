@@ -25,6 +25,7 @@ export function ChecklistItem({ id, title, completed, quantity, notes }: Checkli
   
   const [editing, setEditing] = useState(false);
   const [editValue, setEditValue] = useState(title);
+  const [editNotes, setEditNotes] = useState(notes || "");
 
   const {
     attributes,
@@ -60,18 +61,51 @@ export function ChecklistItem({ id, title, completed, quantity, notes }: Checkli
     });
   };
 
-  const handleEditBlur = async () => {
-    setEditing(false);
-    if (editValue.trim() !== "" && editValue !== title) {
+  const handleSave = () => {
+    const trimmedTitle = editValue.trim();
+    const trimmedNotes = editNotes.trim();
+
+    if (trimmedTitle === "") {
+      setEditValue(title);
+      setEditNotes(notes || "");
+      setEditing(false);
+      return;
+    }
+
+    const titleChanged = trimmedTitle !== title;
+    const notesChanged = trimmedNotes !== (notes || "");
+
+    if (titleChanged || notesChanged) {
       startTransition(async () => {
-        const result = await updateItem(id, { title: editValue });
+        const updateData: { title?: string; notes?: string } = {};
+        if (titleChanged) updateData.title = trimmedTitle;
+        if (notesChanged) updateData.notes = trimmedNotes;
+
+        const result = await updateItem(id, updateData);
         if (result && !result.success) {
           toast.error(result.error);
-          setEditValue(title); // revert local state on error
+          setEditValue(title);
+          setEditNotes(notes || "");
         }
       });
-    } else {
-      setEditValue(title); // revert to original if empty
+    }
+    setEditing(false);
+  };
+
+  const handleBlur = (e: React.FocusEvent) => {
+    if (e.currentTarget.contains(e.relatedTarget as Node)) {
+      return;
+    }
+    handleSave();
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setEditValue(title);
+      setEditNotes(notes || "");
+      setEditing(false);
+    } else if (e.key === "Enter") {
+      handleSave();
     }
   };
 
@@ -101,33 +135,56 @@ export function ChecklistItem({ id, title, completed, quantity, notes }: Checkli
           disabled={isPending}
           className="mt-1 border-[1.5px] rounded border-muted-foreground/50 data-[state=checked]:bg-primary data-[state=checked]:border-primary flex-shrink-0"
         />
-        <div className="flex flex-col gap-0.5 ml-1 flex-1">
+        <div className="flex flex-col gap-0.5 ml-1 flex-1" onBlur={handleBlur}>
           {editing ? (
-            <Input
-              value={editValue}
-              onChange={(e) => setEditValue(e.target.value)}
-              onBlur={handleEditBlur}
-              onKeyDown={(e) => e.key === "Enter" && handleEditBlur()}
-              autoFocus
-              className="h-7 py-1 px-2 text-body-base"
-              disabled={isPending}
-            />
+            <div className="flex flex-col gap-1.5 w-full">
+              <Input
+                value={editValue}
+                onChange={(e) => setEditValue(e.target.value)}
+                onKeyDown={handleKeyDown}
+                autoFocus
+                className="h-7 py-1 px-2 text-body-base"
+                disabled={isPending}
+                placeholder="Item name"
+              />
+              <Input
+                value={editNotes}
+                onChange={(e) => setEditNotes(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className="h-7 py-1 px-2 text-body-sm italic border-l-2 border-primary/30 text-foreground/60"
+                disabled={isPending}
+                placeholder="Add a note (e.g. oral hygiene)..."
+              />
+            </div>
           ) : (
-            <label
-              htmlFor={`item-${id}`}
-              onDoubleClick={() => setEditing(true)}
-              className={cn(
-                "text-body-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer select-none",
-                optimisticCompleted && "line-through"
+            <>
+              <label
+                htmlFor={`item-${id}`}
+                onDoubleClick={() => {
+                  setEditValue(title);
+                  setEditNotes(notes || "");
+                  setEditing(true);
+                }}
+                className={cn(
+                  "text-body-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer select-none",
+                  optimisticCompleted && "line-through"
+                )}
+              >
+                {quantity > 1 ? `${quantity}x ` : ""}{title}
+              </label>
+              {notes && (
+                <p
+                  onDoubleClick={() => {
+                    setEditValue(title);
+                    setEditNotes(notes || "");
+                    setEditing(true);
+                  }}
+                  className="text-body-sm text-foreground/60 italic pl-2 border-l-2 border-primary/30 mt-0.5 cursor-pointer select-none"
+                >
+                  {notes}
+                </p>
               )}
-            >
-              {quantity > 1 ? `${quantity}x ` : ""}{title}
-            </label>
-          )}
-          {notes && !editing && (
-            <p className="text-body-sm text-foreground/60 italic pl-2 border-l-2 border-primary/30 mt-0.5">
-              {notes}
-            </p>
+            </>
           )}
         </div>
       </div>
@@ -138,6 +195,7 @@ export function ChecklistItem({ id, title, completed, quantity, notes }: Checkli
           className="h-7 w-7 text-muted-foreground hover:text-primary"
           onClick={() => {
             setEditValue(title);
+            setEditNotes(notes || "");
             setEditing(true);
           }}
           disabled={isPending || optimisticCompleted}
