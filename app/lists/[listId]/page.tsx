@@ -83,14 +83,16 @@ export default async function ListPage({
                   description={list.description}
                 />
               ) : (
-                <h1 className="text-headline-xl font-heading font-bold text-foreground mb-2">
-                  {list.title}
-                </h1>
-              )}
-              {list.description && (
-                <p className="text-body-base text-muted-foreground mt-1">
-                  {list.description}
-                </p>
+                <>
+                  <h1 className="text-headline-xl font-heading font-bold text-foreground mb-2">
+                    {list.title}
+                  </h1>
+                  {list.description && (
+                    <p className="text-body-base text-muted-foreground mt-1">
+                      {list.description}
+                    </p>
+                  )}
+                </>
               )}
             </div>
 

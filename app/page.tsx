@@ -1,7 +1,7 @@
 import { db } from "@/src/db";
-import { lists, users, categories, items, suggestions } from "@/src/db/schema";
+import { lists, users } from "@/src/db/schema";
 import { eq, sql, desc } from "drizzle-orm";
-import { getActiveUser, logout } from "@/src/lib/auth";
+import { getActiveUser } from "@/src/lib/auth";
 import { redirect } from "next/navigation";
 import { CreateListModal } from "@/components/packing-list/create-list-modal";
 import Link from "next/link";
@@ -44,8 +44,8 @@ export default async function DashboardPage() {
     redirect("/login");
   }
 
-  // Fetch all lists with owner info, category count, item count, pending suggestion count
-  const allListsRaw = await db
+  // Fetch all lists with owner info + counts in a SINGLE optimized query
+  const enrichedLists = await db
     .select({
       id: lists.id,
       title: lists.title,
@@ -53,44 +53,13 @@ export default async function DashboardPage() {
       createdAt: lists.createdAt,
       userId: lists.userId,
       ownerName: users.name,
+      categoryCount: sql<number>`(SELECT count(*) FROM categories WHERE categories.list_id = lists.id)`.mapWith(Number),
+      itemCount: sql<number>`(SELECT count(*) FROM items INNER JOIN categories ON items.category_id = categories.id WHERE categories.list_id = lists.id)`.mapWith(Number),
+      pendingCount: sql<number>`(SELECT count(*) FROM suggestions WHERE suggestions.list_id = lists.id AND suggestions.status = 'pending')`.mapWith(Number),
     })
     .from(lists)
     .leftJoin(users, eq(users.id, lists.userId))
     .orderBy(desc(lists.createdAt));
-
-  // Enrich with counts
-  const enrichedLists = await Promise.all(
-    allListsRaw.map(async (list) => {
-      const [catCount] = await db
-        .select({ count: sql<number>`count(*)`.mapWith(Number) })
-        .from(categories)
-        .where(eq(categories.listId, list.id));
-
-      const [pendingCount] = await db
-        .select({ count: sql<number>`count(*)`.mapWith(Number) })
-        .from(suggestions)
-        .where(eq(suggestions.listId, list.id));
-
-      const [itemCount] = await db
-        .select({ count: sql<number>`count(*)`.mapWith(Number) })
-        .from(items)
-        .innerJoin(categories, eq(items.categoryId, categories.id))
-        .where(eq(categories.listId, list.id));
-
-      const [completedCount] = await db
-        .select({ count: sql<number>`count(*)`.mapWith(Number) })
-        .from(items)
-        .innerJoin(categories, eq(items.categoryId, categories.id))
-        .where(eq(categories.listId, list.id));
-
-      return {
-        ...list,
-        categoryCount: catCount?.count ?? 0,
-        pendingCount: pendingCount?.count ?? 0,
-        itemCount: itemCount?.count ?? 0,
-      };
-    })
-  );
 
   const myLists = enrichedLists.filter((l) => l.userId === activeUser.id);
   const otherLists = enrichedLists.filter((l) => l.userId !== activeUser.id);
