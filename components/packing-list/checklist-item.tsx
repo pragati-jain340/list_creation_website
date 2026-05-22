@@ -125,7 +125,7 @@ export function ChecklistItem({ id, title, completed, quantity, notes }: Checkli
             </label>
           )}
           {notes && !editing && (
-            <p className="text-body-sm text-muted-foreground">
+            <p className="text-body-sm text-foreground/60 italic pl-2 border-l-2 border-primary/30 mt-0.5">
               {notes}
             </p>
           )}
