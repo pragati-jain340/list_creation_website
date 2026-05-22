@@ -272,10 +272,8 @@ export default async function DashboardPage() {
       </main>
 
       {/* Fixed bottom-left user panel — desktop only */}
-      <div className="hidden md:block fixed bottom-0 left-0 z-50 p-4 w-64">
-        <div className="bg-card/95 backdrop-blur-sm border border-border/60 rounded-xl p-3 shadow-lg">
-          <UserSwitcher />
-        </div>
+      <div className="hidden md:block fixed bottom-4 left-4 z-50">
+        <UserSwitcher compact />
       </div>
     </div>
   );

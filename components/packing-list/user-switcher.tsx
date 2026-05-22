@@ -83,7 +83,7 @@ export function UserSwitcher({ compact = false }: UserSwitcherProps) {
               <ChevronDown className="h-3 w-3 text-muted-foreground" />
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-52">
+          <DropdownMenuContent align="start" side="top" className="w-52">
             <div className="px-3 py-2 border-b border-border/50">
               <p className="font-semibold text-sm text-foreground truncate">{activeUser.name}</p>
               <p className="text-[11px] text-muted-foreground truncate">{activeUser.email}</p>
