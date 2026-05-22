@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Travel Packing List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-dim": "#151312",
+                "surface-tint": "#ecc06a",
+                "tertiary-fixed-dim": "#cec5c1",
+                "outline": "#9a8f7e",
+                "surface-bright": "#3c3837",
+                "secondary-fixed-dim": "#d1c4bc",
+                "error": "#ffb4ab",
+                "on-primary-fixed-variant": "#5d4200",
+                "inverse-primary": "#7a5907",
+                "on-primary-container": "#3c2a00",
+                "surface-container-lowest": "#100e0d",
+                "primary-fixed": "#ffdea3",
+                "surface": "#151312",
+                "on-error": "#690005",
+                "background": "#151312",
+                "tertiary": "#cec5c1",
+                "inverse-on-surface": "#33302e",
+                "secondary": "#d1c4bc",
+                "on-tertiary-container": "#302b29",
+                "inverse-surface": "#e8e1df",
+                "error-container": "#93000a",
+                "secondary-fixed": "#ede0d8",
+                "on-surface-variant": "#d1c5b2",
+                "primary-container": "#b58e3d",
+                "tertiary-fixed": "#eae1dd",
+                "on-tertiary-fixed": "#1f1b19",
+                "tertiary-container": "#9a928f",
+                "secondary-container": "#4e453f",
+                "on-secondary-container": "#bfb3ab",
+                "primary-fixed-dim": "#ecc06a",
+                "on-secondary-fixed-variant": "#4e453f",
+                "on-background": "#e8e1df",
+                "on-secondary-fixed": "#211a16",
+                "surface-container-low": "#1d1b1a",
+                "on-surface": "#e8e1df",
+                "on-primary-fixed": "#261900",
+                "surface-container": "#221f1e",
+                "on-secondary": "#362f2a",
+                "surface-container-highest": "#373433",
+                "on-tertiary-fixed-variant": "#4b4643",
+                "surface-variant": "#373433",
+                "outline-variant": "#4e4638",
+                "primary": "#ecc06a",
+                "on-tertiary": "#342f2d",
+                "on-primary": "#412d00",
+                "surface-container-high": "#2c2928",
+                "on-error-container": "#ffdad6"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "margin-mobile": "16px",
+                "margin-desktop": "40px",
+                "container-max": "1200px",
+                "unit": "8px",
+                "stack-md": "16px",
+                "gutter": "24px",
+                "stack-sm": "8px",
+                "stack-lg": "32px"
+        },
+        "fontFamily": {
+                "headline-md": [
+                        "Plus Jakarta Sans"
+                ],
+                "label-md": [
+                        "Plus Jakarta Sans"
+                ],
+                "body-lg": [
+                        "Plus Jakarta Sans"
+                ],
+                "display": [
+                        "Plus Jakarta Sans"
+                ],
+                "headline-lg": [
+                        "Plus Jakarta Sans"
+                ],
+                "label-sm": [
+                        "Plus Jakarta Sans"
+                ],
+                "headline-lg-mobile": [
+                        "Plus Jakarta Sans"
+                ],
+                "body-md": [
+                        "Plus Jakarta Sans"
+                ]
+        },
+        "fontSize": {
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.02em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "28px",
+                        {
+                                "lineHeight": "36px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .checklist-input:checked {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+        .checklist-input:checked + span {
+            opacity: 0.5;
+            text-decoration: line-through;
+        }
+      </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim full-width top-0 sticky z-50">
+<div class="flex justify-between items-center h-16 px-gutter max-w-[1100px] mx-auto w-full">
+<div class="flex items-center gap-6">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface dark:text-inverse-on-surface">Travel</span>
+<nav class="hidden md:flex gap-4">
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary pb-1" href="#">List</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors duration-200 px-2 py-1 rounded" href="#">Suggest Changes</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors duration-200 px-2 py-1 rounded" href="#">Templates</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-xl font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span> Add Item
+                </button>
+<div class="flex gap-2">
+<button class="text-on-surface-variant hover:text-on-surface p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow w-full max-w-[1100px] mx-auto px-margin-desktop py-stack-lg md:grid md:grid-cols-12 gap-gutter relative">
+<!-- Document Content Container -->
+<div class="md:col-span-12 flex flex-col gap-stack-lg">
+<!-- Intro Banner -->
+<div class="bg-secondary-container rounded-xl p-6 flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">waving_hand</span>
+<span class="font-label-md text-label-md text-on-secondary-container">G'day there.</span>
+</div>
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors w-fit group">
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">play_arrow</span>
+<span class="font-body-md text-body-md">Click me for more.</span>
+</button>
+</div>
+<!-- What to Pack Section -->
+<section class="flex flex-col gap-stack-md">
+<h2 class="font-headline-lg text-headline-lg font-bold text-primary">What to Pack</h2>
+<!-- Category Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Misc Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)] transition-shadow duration-300">
+<div class="flex items-center gap-2 mb-4 pb-2 border-b border-outline-variant/30">
+<span class="material-symbols-outlined text-tertiary">inventory_2</span>
+<h3 class="font-label-md text-label-md text-on-surface">Misc</h3>
+</div>
+<ul class="flex flex-col gap-3">
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Sunscreen</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Insect repellent</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Sunglasses</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Floaties</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Camera</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Drone</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Chargers</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Adapter</span>
+</li>
+</ul>
+</div>
+<!-- Clothes Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)] transition-shadow duration-300">
+<div class="flex items-center gap-2 mb-4 pb-2 border-b border-outline-variant/30">
+<span class="material-symbols-outlined text-tertiary">checkroom</span>
+<h3 class="font-label-md text-label-md text-on-surface">Clothes</h3>
+</div>
+<ul class="flex flex-col gap-3">
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Hat</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Lightweight shirts</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Singlets</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Shorts</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Lightweight pants</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Walking shoes</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Flipflops</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Swimming shorts</span>
+</li>
+</ul>
+</div>
+<!-- Toiletries Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)] transition-shadow duration-300">
+<div class="flex items-center gap-2 mb-4 pb-2 border-b border-outline-variant/30">
+<span class="material-symbols-outlined text-tertiary">sanitizer</span>
+<h3 class="font-label-md text-label-md text-on-surface">Toiletries</h3>
+</div>
+<ul class="flex flex-col gap-3">
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Toothbrush</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Toothpaste</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Body wash</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Shampoo</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Conditioner</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Shaver</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Sanitiser</span>
+</li>
+<li class="flex items-center gap-3">
+<input class="checklist-input w-4 h-4 rounded-DEFAULT border-1.5 border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant transition-all duration-200">Towel</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<hr class="border-outline-variant/30 my-stack-sm"/>
+<!-- Bio Section -->
+<section class="flex flex-col md:flex-row gap-6 items-start">
+<div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-surface-container-lowest shadow-sm">
+<img alt="Profile of Alex" class="w-full h-full object-cover" data-alt="A portrait of a smiling young man wearing a cap, warm lighting, natural outdoors setting, warm sandy tones, friendly and approachable vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDil5_UQ_XuaAZVu1_LzwZmxAFxu1GgIcO28WeGkHv738QQEHWCUsCwPxKbT96JylwEE4EgRth1nFvmbRjJa9KJQYA7H4YDMViwuzP1hcrKuXsFUOQtHV87i4zVVPqPS1qXMRZagO5O0zG6GSAKHFyl8Enql7eUm1rYNbCa-Fya0o51WxSSbT_8S2Y5S4vGlL2Y7Op5rUWRL0bsVbgoAwlh59G91hQusB4MCDFlaufne5mM8cq0gg0VlAuNIyQ6vYum6qv2tXFb3fU"/>
+</div>
+<div class="flex-grow flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">waving_hand</span>
+<h4 class="font-label-md text-label-md text-on-surface">G'day! I'm Alex.</h4>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[600px]">
+                        I created this Notion template to make your trip better and life easier.<br/>
+                        Learn more at <a class="text-primary hover:underline" href="#">www.alexnoles.com</a>
+</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+                        You can find more templates here: <a class="text-primary hover:underline" href="#">https://www.notion.so/templates/creators/nolesy-noles</a>
+</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-4 opacity-75">
+                        Check out the full Travel Planner and Assistant FREE template <a class="text-primary hover:underline" href="#">here.</a>
+</p>
+</div>
+<!-- Social Links -->
+<div class="flex flex-col gap-1 min-w-[150px]">
+<a class="bg-secondary-container/50 hover:bg-secondary-container px-3 py-1.5 rounded font-body-md text-body-md text-on-secondary-container transition-colors" href="#">Let's chat</a>
+<a class="bg-secondary-container/50 hover:bg-secondary-container px-3 py-1.5 rounded font-body-md text-body-md text-on-secondary-container transition-colors" href="#">LinkedIn</a>
+<a class="bg-secondary-container/50 hover:bg-secondary-container px-3 py-1.5 rounded font-body-md text-body-md text-on-secondary-container transition-colors" href="#">Instagram</a>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-dim full-width bottom-0 border-t border-outline-variant dark:border-outline mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter py-stack-md max-w-[1100px] mx-auto gap-4">
+<span class="font-label-md text-label-md text-primary">© 2024 Travel Journal. Built for organized explorers.</span>
+<div class="flex gap-6 font-body-md text-body-md">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Creator Hub</a>
+</div>
+</div>
+</footer>
+</body></html>

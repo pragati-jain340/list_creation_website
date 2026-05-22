@@ -1,0 +1,55 @@
+# CORE UI
+npm install lucide-react
+npm install framer-motion
+
+# FORMS + VALIDATION
+npm install react-hook-form
+npm install zod
+npm install @hookform/resolvers
+
+# STATE MANAGEMENT
+npm install zustand
+
+# DRAG & DROP
+npm install @dnd-kit/core
+npm install @dnd-kit/sortable
+npm install @dnd-kit/utilities
+
+# DATABASE
+npm install drizzle-orm
+npm install postgres
+
+# DEV DEPENDENCIES
+npm install -D drizzle-kit
+
+# SHADCN
+npx shadcn@latest init
+
+npx shadcn@latest add button
+npx shadcn@latest add card
+npx shadcn@latest add checkbox
+npx shadcn@latest add dialog
+npx shadcn@latest add dropdown-menu
+npx shadcn@latest add input
+npx shadcn@latest add textarea
+npx shadcn@latest add sheet
+
+npm install lucide-react
+npm install framer-motion
+npm install zustand
+npm install zod
+npm install react-hook-form
+npm install @hookform/resolvers
+npm install @dnd-kit/core
+npm install @dnd-kit/sortable
+npm install @dnd-kit/utilities
+
+npm install drizzle-orm
+npm install postgres
+
+npm install -D drizzle-kit
+
+npm install --legacy-peer-deps
+
+
+pip install psycopg2-binary python-dotenv

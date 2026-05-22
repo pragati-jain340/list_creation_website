@@ -1,0 +1,219 @@
+{
+  "suggestion_changes": [],
+  "users": [
+    {
+      "id": "00649cd9-7886-4a3d-a3b2-2337f2f755a5",
+      "name": "Pragati",
+      "email": "pragati@gmail.com",
+      "avatar_url": null,
+      "created_at": "2026-05-22 12:41:57.352659"
+    }
+  ],
+  "lists": [
+    {
+      "id": "61bc4424-e41b-4135-94f1-bb05a7c05b6e",
+      "user_id": "00649cd9-7886-4a3d-a3b2-2337f2f755a5",
+      "title": "Germany Travel Packing List",
+      "description": "Packing checklist for Munich travel",
+      "trip_start": null,
+      "trip_end": null,
+      "created_at": "2026-05-22 12:42:20.070998"
+    }
+  ],
+  "categories": [
+    {
+      "id": "e81dec8d-e5ac-4c9a-a13a-19e9a05eb409",
+      "list_id": "61bc4424-e41b-4135-94f1-bb05a7c05b6e",
+      "name": "Electronics",
+      "icon": null,
+      "order": 1,
+      "created_at": "2026-05-22 12:42:45.418643"
+    },
+    {
+      "id": "15a5a98a-0723-43a4-8c84-69832bc836ef",
+      "list_id": "61bc4424-e41b-4135-94f1-bb05a7c05b6e",
+      "name": "Clothes",
+      "icon": null,
+      "order": 2,
+      "created_at": "2026-05-22 12:42:45.418643"
+    },
+    {
+      "id": "4c092fd4-98a1-4d69-85c0-bf2881d37efd",
+      "list_id": "61bc4424-e41b-4135-94f1-bb05a7c05b6e",
+      "name": "Toiletries",
+      "icon": null,
+      "order": 3,
+      "created_at": "2026-05-22 12:42:45.418643"
+    },
+    {
+      "id": "bdbbe547-59f0-4677-b5f6-d8931024a692",
+      "list_id": "61bc4424-e41b-4135-94f1-bb05a7c05b6e",
+      "name": "Documents",
+      "icon": null,
+      "order": 4,
+      "created_at": "2026-05-22 12:42:45.418643"
+    },
+    {
+      "id": "5ce31e91-2862-4e19-9c4f-9dfc4f955f5b",
+      "list_id": "61bc4424-e41b-4135-94f1-bb05a7c05b6e",
+      "name": "Medicine",
+      "icon": null,
+      "order": 5,
+      "created_at": "2026-05-22 12:42:45.418643"
+    },
+    {
+      "id": "07376ce7-6e12-4785-af82-b154ef88e4c0",
+      "list_id": "61bc4424-e41b-4135-94f1-bb05a7c05b6e",
+      "name": "Cooking",
+      "icon": null,
+      "order": 6,
+      "created_at": "2026-05-22 12:42:45.418643"
+    },
+    {
+      "id": "164c91af-c36f-4675-b5b6-1fb621ea7ff9",
+      "list_id": "61bc4424-e41b-4135-94f1-bb05a7c05b6e",
+      "name": "Miscellaneous",
+      "icon": null,
+      "order": 7,
+      "created_at": "2026-05-22 12:42:45.418643"
+    },
+    {
+      "id": "8e0b565e-3808-4d28-ac9a-43e2d206836e",
+      "list_id": "61bc4424-e41b-4135-94f1-bb05a7c05b6e",
+      "name": "Stationary",
+      "icon": null,
+      "order": 8,
+      "created_at": "2026-05-22 12:42:45.418643"
+    },
+    {
+      "id": "5fd9b0a2-0909-4b08-a811-8d0af2b1bb1f",
+      "list_id": "61bc4424-e41b-4135-94f1-bb05a7c05b6e",
+      "name": "First Aid",
+      "icon": null,
+      "order": 9,
+      "created_at": "2026-05-22 12:42:45.418643"
+    },
+    {
+      "id": "7922224c-d664-451f-a993-b3d47f8136c5",
+      "list_id": "61bc4424-e41b-4135-94f1-bb05a7c05b6e",
+      "name": "Masale",
+      "icon": null,
+      "order": 10,
+      "created_at": "2026-05-22 12:42:45.418643"
+    }
+  ],
+  "items": [
+    {
+      "id": "37d15837-fb0e-47aa-b7e9-086098e2b04f",
+      "category_id": "8e0b565e-3808-4d28-ac9a-43e2d206836e",
+      "title": "fevistick",
+      "completed": false,
+      "quantity": 1,
+      "notes": null,
+      "order": 6,
+      "created_by": null,
+      "created_at": "2026-05-22 12:46:15.181749"
+    },
+    {
+      "id": "a40c1f42-d68e-4762-8f01-6fb6b1800965",
+      "category_id": "8e0b565e-3808-4d28-ac9a-43e2d206836e",
+      "title": "1 notebook",
+      "completed": false,
+      "quantity": 1,
+      "notes": null,
+      "order": 1,
+      "created_by": null,
+      "created_at": "2026-05-22 12:46:15.181749"
+    },
+    {
+      "id": "277848bc-ab59-4e83-80ff-6a74ad88d2f9",
+      "category_id": "8e0b565e-3808-4d28-ac9a-43e2d206836e",
+      "title": "stapler",
+      "completed": false,
+      "quantity": 1,
+      "notes": null,
+      "order": 3,
+      "created_by": null,
+      "created_at": "2026-05-22 12:46:15.181749"
+    },
+    {
+      "id": "420dab10-d3e1-4aea-a3bf-f22ec4aa198e",
+      "category_id": "8e0b565e-3808-4d28-ac9a-43e2d206836e",
+      "title": "tape",
+      "completed": false,
+      "quantity": 1,
+      "notes": null,
+      "order": 5,
+      "created_by": null,
+      "created_at": "2026-05-22 12:46:15.181749"
+    },
+    {
+      "id": "bd6a000c-43f4-4ec2-8a84-5e017cbf0744",
+      "category_id": "8e0b565e-3808-4d28-ac9a-43e2d206836e",
+      "title": "paper clip",
+      "completed": false,
+      "quantity": 1,
+      "notes": null,
+      "order": 4,
+      "created_by": null,
+      "created_at": "2026-05-22 12:46:15.181749"
+    },
+    {
+      "id": "4c3ebc76-a5d1-4eb1-9cfc-84a5ccdafcd4",
+      "category_id": "8e0b565e-3808-4d28-ac9a-43e2d206836e",
+      "title": "pen pencil",
+      "completed": false,
+      "quantity": 1,
+      "notes": null,
+      "order": 2,
+      "created_by": null,
+      "created_at": "2026-05-22 12:46:15.181749"
+    },
+    {
+      "id": "913bccda-e773-421d-98a6-e4a6bba2a35e",
+      "category_id": "164c91af-c36f-4675-b5b6-1fb621ea7ff9",
+      "title": "plastic Mobile cover",
+      "completed": false,
+      "quantity": 1,
+      "notes": null,
+      "order": 1,
+      "created_by": null,
+      "created_at": "2026-05-22 12:46:00.892090"
+    },
+    {
+      "id": "325d3ab4-4f1f-4d54-a99a-fa86ca9f2aeb",
+      "category_id": "164c91af-c36f-4675-b5b6-1fb621ea7ff9",
+      "title": "500 euro cash",
+      "completed": false,
+      "quantity": 1,
+      "notes": null,
+      "order": 2,
+      "created_by": null,
+      "created_at": "2026-05-22 12:46:00.892090"
+    },
+    {
+      "id": "148187f4-a705-4e17-b83e-c436ada6d70c",
+      "category_id": "164c91af-c36f-4675-b5b6-1fb621ea7ff9",
+      "title": "3 pairs of glasses",
+      "completed": false,
+      "quantity": 1,
+      "notes": null,
+      "order": 9,
+      "created_by": null,
+      "created_at": "2026-05-22 12:46:00.892090"
+    },
+    {
+      "id": "70cc9106-a816-47ea-bd39-4c4099e329f3",
+      "category_id": "164c91af-c36f-4675-b5b6-1fb621ea7ff9",
+      "title": "white nights book",
+      "completed": false,
+      "quantity": 1,
+      "notes": null,
+      "order": 6,
+      "created_by": null,
+      "created_at": "2026-05-22 12:46:00.892090"
+    }
+  ],
+  "suggestions": [],
+  "collaborators": []
+}
